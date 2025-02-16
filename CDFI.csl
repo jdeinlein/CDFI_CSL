@@ -22,7 +22,7 @@
     <updated>2025-02-16T12:00:00+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
- <locale xml:lang="de">
+   <locale xml:lang="de">
     <terms>
       <term name="note">wie Anm.</term>
       <term name="et-al">et al.</term>
@@ -85,6 +85,7 @@
         <names variable="author">
           <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
         </names>
+        <text suffix=", "/> <!-- Komma und Leerzeichen nach dem Autor -->
         <text variable="title" font-style="italic" suffix=", "/>
         <text variable="publisher-place" suffix=" "/>
         <text variable="year" suffix="."/>
@@ -93,6 +94,7 @@
         <names variable="author">
           <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
         </names>
+        <text suffix=", "/> <!-- Komma und Leerzeichen nach dem Autor -->
         <text variable="title" suffix=", in: "/>
         <names variable="editor">
           <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
@@ -109,6 +111,7 @@
         <names variable="author">
           <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
         </names>
+        <text suffix=", "/> <!-- Komma und Leerzeichen nach dem Autor -->
         <text variable="title" suffix=", "/>
         <text variable="container-title" font-style="italic" suffix=" "/>
         <text variable="volume" suffix=", "/>
