@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="note" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>Caspar-David-Friedrich-Institut Greifswald</title>
+    <title-short>CDFI</title-short>
+    <id>http://www.zotero.org/styles/zeitschrift-fur-kunstgeschichte-leitfaden</id>
+    <link href="http://www.zotero.org/styles/zeitschrift-fur-kunstgeschichte-leitfaden" rel="self"/>
+    <link href="http://www.zotero.org/styles/kritische-ausgabe" rel="template"/>
+    <author>
+      <name>Philipp Zumstein</name>
+      <uri>https://github.com/zuphilip/</uri>
+    </author>
+    <contributor>
+      <name>Anna Simon</name>
+      <email>simonanna@gmx.net</email>
+    </contributor>
+    <category citation-format="note"/>
+    <category field="humanities"/>
+    <category field="history"/>
+    <issn>0044-2992</issn>
+    <summary>Angepasster CSL-Stil für den Leitfaden zum wissenschaftlichen Arbeiten des Caspar-David-Friedrich-Instituts.</summary>
+    <updated>2025-02-16T12:00:00+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+ <locale xml:lang="de">
+    <terms>
+      <term name="note">wie Anm.</term>
+      <term name="et-al">et al.</term>
+      <term name="editor" form="short">Hg.</term>
+      <term name="editortranslator" form="verb-short">hg. und übers. von</term>
+      <term name="accessed">letzter Zugriff am</term>
+      <term name="compare">Vgl.</term>
+      <term name="page">S.</term> <!-- "S." für Seitenzahlen -->
+      <term name="ibid">ebd.</term> <!-- "ebd." für wiederholte Zitate -->
+    </terms>
+  </locale>
+  <locale xml:lang="en">
+    <terms>
+      <term name="note">as note</term>
+      <term name="editortranslator" form="verb-short">ed. and trans. by</term>
+      <term name="compare">cf.</term>
+      <term name="page">p.</term> <!-- "p." für Seitenzahlen im Englischen -->
+      <term name="ibid">ibid.</term> <!-- "ibid." für wiederholte Zitate im Englischen -->
+    </terms>
+  </locale>
+
+  <!-- Makros für Autoren und Herausgeber -->
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" delimiter="/" and="text" delimiter-precedes-et-al="never"/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title" form="short"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="author">
+    <names variable="author" delimiter=", ">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+      <label form="short" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <text variable="title"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="editor">
+    <names variable="editor" delimiter=", ">
+      <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+      <label form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+
+  <!-- Makro für das Jahr -->
+  <macro name="year-date">
+    <date variable="issued" date-parts="year" form="numeric"/>
+  </macro>
+
+  <!-- Makro für das Literaturverzeichnis -->
+  <macro name="bibliography-entry">
+    <choose>
+      <if type="book">
+        <names variable="author">
+          <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+        </names>
+        <text variable="title" font-style="italic" suffix=", "/>
+        <text variable="publisher-place" suffix=" "/>
+        <text variable="year" suffix="."/>
+      </if>
+      <else-if type="chapter">
+        <names variable="author">
+          <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+        </names>
+        <text variable="title" suffix=", in: "/>
+        <names variable="editor">
+          <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+        </names>
+        <text variable="container-title" font-style="italic" suffix=", "/>
+        <text variable="publisher-place" suffix=" "/>
+        <text variable="year" suffix=", "/>
+        <group prefix="S. ">
+          <text variable="page"/>
+        </group>
+        <text suffix="."/>
+      </else-if>
+      <else-if type="article-journal">
+        <names variable="author">
+          <name and="text" delimiter-precedes-et-al="never" delimiter-precedes-last="never"/>
+        </names>
+        <text variable="title" suffix=", "/>
+        <text variable="container-title" font-style="italic" suffix=" "/>
+        <text variable="volume" suffix=", "/>
+        <text variable="issue" suffix=", "/>
+        <group prefix="S. ">
+          <text variable="page"/>
+        </group>
+        <text suffix="."/>
+      </else-if>
+      <!-- Weitere Quellentypen können hier hinzugefügt werden -->
+    </choose>
+  </macro>
+
+  <!-- Zitationsstil -->
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-names="true">
+    <layout delimiter="; " suffix=".">
+      <choose>
+        <if position="ibid-with-locator">
+          <group delimiter=", ">
+            <text term="ibid"/>
+            <group prefix="S. ">
+              <text variable="locator"/>
+            </group>
+          </group>
+        </if>
+        <else-if position="ibid">
+          <text term="ibid"/>
+        </else-if>
+        <else-if position="subsequent">
+          <group delimiter=", ">
+            <text macro="author-short"/>
+            <text macro="year-date"/>
+            <group prefix="S. ">
+              <text variable="locator"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=", ">
+            <text macro="author"/>
+            <text variable="title" font-style="italic"/>
+            <text macro="year-date"/>
+            <group prefix="S. ">
+              <text variable="locator"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+
+  <!-- Literaturverzeichnis -->
+  <bibliography et-al-min="3" et-al-use-first="1" subsequent-author-substitute="———" entry-spacing="0" hanging-indent="true">
+    <sort>
+      <key macro="author"/>
+      <key macro="year-date"/>
+      <key variable="title"/>
+    </sort>
+    <layout suffix=".">
+      <text macro="bibliography-entry"/>
+    </layout>
+  </bibliography>
+</style>
